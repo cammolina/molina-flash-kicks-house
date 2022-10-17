@@ -1,5 +1,3 @@
-import { withTheme } from "@emotion/react";
-
 const viewport = {
     width: document.documentElement.clientWidth,
     height: document.documentElement.clientHeight

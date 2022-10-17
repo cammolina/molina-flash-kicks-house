@@ -2,30 +2,42 @@ import React from "react";
 import logo from "../../assets/logo.png";
 import { CartWidget } from "../CartWidget/CarWidget";
 import { styles } from "./Navbar.style";
+import {Link, NavLink} from "react-router-dom"
 
-const Navbar = ({ nombreUsuario, apellidoUsuario, children }) => {
+const Navbar = () => {
 
 
   const categorias = [
-    {nombre:"Home", id:0, ruta:"#"},
-    {nombre:"Sneakers", id:1, ruta:"#"},
-    {nombre:"Release Dates", id:2, ruta:"#"},
-    {nombre:"About Us", id:3, ruta:"#"},
-    {nombre:"Contact Us", id:3, ruta:"#"},
+    {nombre:"All items", id:0, ruta:"/category/allitems"},
+    {nombre:"Sneakers", id:1, ruta:"/category/sneakers"},
+    {nombre:"Cool Clothes", id:2, ruta:"/category/coolclothes"},
+    {nombre:"His stuff", id:3, ruta:"/category/his stuff"},
+    {nombre:"Her stuff", id:3, ruta:"/category/her stuff"},
   ];
 
   return (
     <header style={styles.container}>
-      <img style={styles.imagenes} src={logo} alt="tienda online" />
-      <h1> Flash Kicks House {nombreUsuario}</h1>
+      <Link style= {styles.imagenes} to= "/">
+        <img style={styles.imagenes} src={logo} alt="tienda online" />
+      </Link>
+
+      <h1> Flash Kicks House </h1>
       <nav>
-        {
-          categorias.map((categoria)=>{
-            return <a key={categoria.id} style={styles.categorias} href={categoria.ruta}>{categoria.nombre}</a>
-          })
-        }
+        {categorias.map((categoria)=>{
+            return (
+            <NavLink 
+            key={categoria.id} 
+            style={styles.categorias} 
+            to= {categoria.ruta}>
+
+              {categoria.nombre}
+            </NavLink>
+        )
+        })}
       </nav>
-      <CartWidget />
+      <Link to="/cart">
+      <CartWidget />  
+      </Link>
     </header>
   );
 };

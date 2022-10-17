@@ -1,28 +1,28 @@
 import React from "react";
 import "./App.css";
 import Navbar from "./Components/Navbar/Navbar";
-import {ItemListContainer} from './Containers/ItemListContainer'
-import {ComponenteEstados} from './ComponenteEstados'
-import {Usuarios} from './Usuarios'
-
-
+import { ItemListContainer } from "./Containers/ItemListContainer/ItemListContainer";
+import { ItemDetailContainer } from "./Containers/ItemDetailContainer";
+import { Cart } from "./Containers/CartView";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 const App = () => {
-  const nombre = "Camila";
-  const mensaje = "Aprovecha el descuento"
-
-  const onAdd =() => {
-    console.log("agregaste algo al carrito");
-  }
+  const mensaje = "Las mejores ofertas";
 
   return (
     <>
-      <Navbar nombreUsuario={nombre} apellidoUsuario="Molina" />
-      <ItemListContainer greeting={mensaje} mensaje="eso es todo"/>
+      <BrowserRouter>
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<ItemListContainer greeting={mensaje} />}/>
+          <Route path="/categoria/:id" element={<ItemListContainer greeting={mensaje} />}/>
+          <Route path="/producto/:id" element={<ItemDetailContainer />}/>
+          <Route path="/cart" element={<Cart />}/>
+          <Route path="*" element={<ItemListContainer />}/>
+        </Routes>
+      </BrowserRouter>
     </>
   );
 };
 
 export default App;
-
-

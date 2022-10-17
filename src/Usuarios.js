@@ -6,18 +6,12 @@ export const Usuarios = () => {
     { nombre: "Juana" },
   ]);
 
-  //const [nombre, setNombre] = useState("")
-
   const mariano = { nombre: "Mariano" };
 
   const agregarMariano = () => {
     setUsuarios([...usuarios, mariano]);
     //setUsuarios([...usuarios,{nombre}])
   };
-
-  /*const manejarAgregar = (e)=>{
-    setNombre(e.target.value);
-  }*/
 
   return (
     <div>
@@ -26,7 +20,6 @@ export const Usuarios = () => {
       {usuarios.map((usuario, indice) => (
         <h1 key={indice}>{usuario.nombre}</h1>
       ))}
-      {/*<input onChange={manejarAgregar} type="text" />*/ }
     </div>
   );
 };
